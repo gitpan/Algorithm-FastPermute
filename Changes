@@ -1,0 +1,18 @@
+Revision history for Perl extension Algorithm::FastPermute.
+
+0.01  Fri Aug 24 23:04:02 2001
+	- original version; created by h2xs 1.1.1.4 with options
+		-Acn Algorithm::FastPermute
+
+0.02  Mon Aug 27 20:04:28 BST 2001
+	- bail out if the array is empty
+	- allocate big enough buffers :-)
+	- speed improvement: move AvARRAY assignment out of inner loop
+	- cope with tied arrays
+	- use CXt_NULL instead of CXt_SUB, and hide the outer contexts
+	- Unix line-endings on README file
+	- handle exceptions (via JMPENV)
+
+0.02  Sat Sep  1 12:00:53 BST 2001
+	- use je_mustcatch (CATCH_[GS]ET) rather than manual JMPENV_*
+	  (thanks to Graham Barr)

@@ -1,0 +1,8 @@
+Changes
+FastPermute.pm
+FastPermute.xs
+MANIFEST
+Makefile.PL
+README
+perms.pl
+test.pl

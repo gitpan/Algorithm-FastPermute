@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------------
+| Algorithm::FastPermute v0.03    - Robin Houston, 2001-09-01
+-----------------------------------------------------------------------------
+
+v0.03: the speed of v0.01 and the robustness of v0.02.
+
+Thanks to Graham Barr for pointing out a better way to cope with
+exceptions.
+
+
+NAME
+       Algorithm::FastPermute - Rapid generation of permutations
+
+SYNOPSIS
+         use Algorithm::FastPermute ('permute');
+         my @array = (1..shift());
+         permute {
+             print "@array\n";         # Print all the permutations
+         } @array;
+
+
+DESCRIPTION
+       Algorithm::FastPermute generates all the permutations of
+       an array. You pass a block of code, which will be executed
+       for each permutation.
+
+       It's very fast. My tests suggest it's four or five times as
+       fast as Algorithm::Permute.
+
+EXPORT
+       The `permute' function is exported by default.
+
+AUTHOR
+       Robin Houston, <robin@kitsite.com>
+
+       Based on a C program by Matt Day.
+
+SEE ALSO
+       the Algorithm::Permute manpage
+
+COPYRIGHT
+       Copyright (c) 2001, Robin Houston. All Rights Reserved.
+       This module is free software. It may be used,
+       redistributed and/or modified under the same terms as Perl
+       itself.
