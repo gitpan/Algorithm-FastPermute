@@ -2,6 +2,49 @@
 #include "perl.h"
 #include "XSUB.h"
 
+/* For 5.005 compatibility */
+#ifndef aTHX_
+#  define aTHX_
+#endif
+#ifndef aTHX
+#  define aTHX
+#endif
+#ifdef ppaddr
+#  define PL_ppaddr ppaddr
+#endif
+
+/* This hack is stolen from Graham Barr's Scalar-List-Utils package.
+   The comment therein runs:
+
+   Some platforms have strict exports. And before 5.7.3 cxinc (or Perl_cxinc)
+   was not exported. Therefore platforms like win32, VMS etc have problems
+   so we redefine it here -- GMB
+
+   With any luck, it will enable us to build under ActiveState Perl.
+*/
+#if PERL_VERSION < 7/* Not in 5.6.1. */
+#  define SvUOK(sv)           SvIOK_UV(sv)
+#  ifdef cxinc
+#    undef cxinc
+#  endif
+#  define cxinc() my_cxinc(aTHX)
+static I32
+my_cxinc(pTHX)
+{
+    cxstack_max = cxstack_max * 3 / 2;
+    Renew(cxstack, cxstack_max + 1, struct context);      /* XXX should fix CXINC macro */
+    return cxstack_ix + 1;
+}
+#endif
+
+/* Prior to version 0.04 we would assign to AvARRAY(array). Unfortunately
+ * that expands to an assignment which has a typecast on the left-hand side.
+ * So it was technically illegal, but GCC is decent enough to accept it
+ * anyway. Unfortunately other compilers are not usually so forgiving...
+ */
+#define AvARRAY_set(av, val) ((XPVAV*)  SvANY(av))->xav_array = (char*) val
+
+
 void
 permute_engine(AV* av, SV** array, I32 level, I32 len, SV*** tmparea, OP* callback)
 {
@@ -13,7 +56,7 @@ permute_engine(AV* av, SV** array, I32 level, I32 len, SV*** tmparea, OP* callba
 	Copy(array, copy, len, SV*);
 	
 	if (calling)
-	    AvARRAY(av) = copy;
+	    AvARRAY_set(av, copy);
 
 	do {
 		if (calling) {
@@ -84,7 +127,7 @@ SV* array_sv;
             copy[x] = (svp) ? SvREFCNT_inc(*svp) : &PL_sv_undef;
         }
         SvRMAGICAL_off(array);
-        AvARRAY(array) = copy;
+        AvARRAY_set(array, copy);
         AvFILLp(array) = len - 1;
     }
     
@@ -126,6 +169,6 @@ SV* array_sv;
         free(copy);
     }
     
-    AvARRAY(array) = array_array;
+    AvARRAY_set(array, array_array);
     SvFLAGS(array) = array_flags;
     AvFILLp(array) = array_fill;

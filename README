@@ -1,11 +1,14 @@
 -----------------------------------------------------------------------------
-| Algorithm::FastPermute v0.03    - Robin Houston, 2001-09-01
+| Algorithm::FastPermute v0.05    - Robin Houston, 2002-03-05
 -----------------------------------------------------------------------------
 
-v0.03: the speed of v0.01 and the robustness of v0.02.
+v0.05: Now works on Win32 and IRIX
+Thanks to Edwin Pratomo, Jørn Amundsen and Yves Orton for reporting problems
 
-Thanks to Graham Barr for pointing out a better way to cope with
-exceptions.
+Note: A version of this implementation is also provided by the
+Algorithm::Permute module. The code in Algorithm::Permute 0.03 corresponds to
+Algorithm::FastPermute 0.03; if you're trying to use that and having problems,
+it may be worth giving this distribution a try instead.
 
 
 NAME
@@ -25,7 +28,7 @@ DESCRIPTION
        for each permutation.
 
        It's very fast. My tests suggest it's four or five times as
-       fast as Algorithm::Permute.
+       fast as Algorithm::Permute's traditional interface.
 
 EXPORT
        The `permute' function is exported by default.
@@ -39,7 +42,6 @@ SEE ALSO
        the Algorithm::Permute manpage
 
 COPYRIGHT
-       Copyright (c) 2001, Robin Houston. All Rights Reserved.
-       This module is free software. It may be used,
-       redistributed and/or modified under the same terms as Perl
-       itself.
+       Copyright (c) 2001-2002, Robin Houston. All Rights Reserved.
+       This module is free software. It may be used, redistributed
+       and/or modified under the same terms as Perl itself.

@@ -13,6 +13,15 @@ Revision history for Perl extension Algorithm::FastPermute.
 	- Unix line-endings on README file
 	- handle exceptions (via JMPENV)
 
-0.02  Sat Sep  1 12:00:53 BST 2001
+0.03  Sat Sep  1 12:00:53 BST 2001
 	- use je_mustcatch (CATCH_[GS]ET) rather than manual JMPENV_*
 	  (thanks to Graham Barr)
+
+0.04  Tue Sep  4 11:17:27 BST 2001
+	- make it compile with 5.005
+
+0.05  Tue Mar  5 15:10:48 GMT 2002
+	- remove dependence on GCC-specific feature (assignment to AvARRAY(av))
+	- steal Graham Barr's cxinc trick from Scalar-List-Utils, so we can
+	  compile on ActiveState (Win32)
+

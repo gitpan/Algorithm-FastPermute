@@ -34,10 +34,10 @@ untie @array;
 @array = (qw/a r s e/);
 $i = 0;
 permute {eval {goto foo}; ++$i } @array;
-if ($@ =~ /pseudo block/) {
+if ($@ =~ /^Can't "goto" out/) {
     print "ok 7\n";
 } else {
-    foo: print "not ok 7\n";
+    foo: print "not ok 7\t# $@\n";
 }
 
 print ($i == 24 ? "ok 8\n" : "not ok 8\n");
