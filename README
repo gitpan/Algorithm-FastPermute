@@ -1,6 +1,9 @@
 -----------------------------------------------------------------------------
-| Algorithm::FastPermute v0.06    - Robin Houston, 2004-02-01
+| Algorithm::FastPermute v0.07    - Robin Houston, 2004-12-07
 -----------------------------------------------------------------------------
+
+v0.07: Don't compile with -pg; use -O2 instead. Code is identical
+to 0.06, only Makefile.PL has changed.
 
 v0.06: Now works on older (5.005) and newer (5.8.x) versions
 of Perl. Thanks to Richard Clamp, Edwin Pratomo, Jørn Amundsen,

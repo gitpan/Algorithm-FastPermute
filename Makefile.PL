@@ -8,5 +8,5 @@ WriteMakefile(
     'LIBS'		=> [''], # e.g., '-lm'
     'DEFINE'		=> '', # e.g., '-DHAVE_SOMETHING'
     'INC'		=> '', # e.g., '-I/usr/include/other'
-    OPTIMIZE            => '-pg',
+    OPTIMIZE            => '-O2'
 );
