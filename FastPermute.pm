@@ -13,7 +13,7 @@ use vars qw(@ISA @EXPORT $VERSION);
 
 @ISA = qw(Exporter DynaLoader);
 @EXPORT = qw(permute);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 bootstrap Algorithm::FastPermute $VERSION;
 

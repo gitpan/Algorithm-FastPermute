@@ -9,6 +9,12 @@
 #ifndef aTHX
 #  define aTHX
 #endif
+#ifndef pTHX
+#  define pTHX
+#endif
+#ifndef pTHX_
+#  define pTHX_
+#endif
 #ifdef ppaddr
 #  define PL_ppaddr ppaddr
 #endif
@@ -22,12 +28,11 @@
 
    With any luck, it will enable us to build under ActiveState Perl.
 */
-#if PERL_VERSION < 7/* Not in 5.6.1. */
-#  define SvUOK(sv)           SvIOK_UV(sv)
-#  ifdef cxinc
-#    undef cxinc
-#  endif
-#  define cxinc() my_cxinc(aTHX)
+#ifndef SvUOK
+# define SvUOK(sv)           SvIOK_UV(sv)
+#endif
+#ifndef cxinc
+# define cxinc() my_cxinc(aTHX)
 static I32
 my_cxinc(pTHX)
 {
@@ -141,8 +146,12 @@ SV* array_sv;
     /* Set up the context for the callback */
     SAVESPTR(CvROOT(callback)->op_ppaddr);
     CvROOT(callback)->op_ppaddr = PL_ppaddr[OP_NULL];  /* Zap the OP_LEAVESUB */
-    SAVESPTR(PL_curpad);
+#ifdef PAD_SET_CUR
+    PAD_SET_CUR(CvPADLIST(callback),1);
+#else
+    SAVESPTR(PL_curpad); SAVESPTR(PL_comppad);
     PL_curpad = AvARRAY((AV*)AvARRAY(CvPADLIST(callback))[1]);
+#endif
     SAVETMPS;
     SAVESPTR(PL_op);
 

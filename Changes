@@ -25,3 +25,5 @@ Revision history for Perl extension Algorithm::FastPermute.
 	- steal Graham Barr's cxinc trick from Scalar-List-Utils, so we can
 	  compile on ActiveState (Win32)
 
+0.06  Sun Feb  1 10:12:39 GMT 2004
+	- fix cxinc (again) with Win32 versions of 5.8

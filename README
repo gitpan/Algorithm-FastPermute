@@ -1,14 +1,13 @@
 -----------------------------------------------------------------------------
-| Algorithm::FastPermute v0.05    - Robin Houston, 2002-03-05
+| Algorithm::FastPermute v0.06    - Robin Houston, 2004-02-01
 -----------------------------------------------------------------------------
 
-v0.05: Now works on Win32 and IRIX
-Thanks to Edwin Pratomo, Jørn Amundsen and Yves Orton for reporting problems
+v0.06: Now works on older (5.005) and newer (5.8.x) versions
+of Perl. Thanks to Richard Clamp, Edwin Pratomo, Jørn Amundsen,
+Yves Orton and Murat Ünalan for reporting problems.
 
 Note: A version of this implementation is also provided by the
-Algorithm::Permute module. The code in Algorithm::Permute 0.03 corresponds to
-Algorithm::FastPermute 0.03; if you're trying to use that and having problems,
-it may be worth giving this distribution a try instead.
+Algorithm::Permute module.
 
 
 NAME
@@ -34,7 +33,7 @@ EXPORT
        The `permute' function is exported by default.
 
 AUTHOR
-       Robin Houston, <robin@kitsite.com>
+       Robin Houston, <robin@cpan.org>
 
        Based on a C program by Matt Day.
 
