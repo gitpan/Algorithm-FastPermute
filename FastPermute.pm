@@ -6,6 +6,7 @@ BEGIN {
     warnings->import if !$@
 }
 
+require 5.006;
 require Exporter;
 require DynaLoader;
 
@@ -13,7 +14,7 @@ use vars qw(@ISA @EXPORT $VERSION);
 
 @ISA = qw(Exporter DynaLoader);
 @EXPORT = qw(permute);
-$VERSION = '0.07';
+$VERSION = '0.99';
 
 bootstrap Algorithm::FastPermute $VERSION;
 

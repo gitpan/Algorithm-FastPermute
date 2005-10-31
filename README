@@ -1,17 +1,10 @@
 -----------------------------------------------------------------------------
-| Algorithm::FastPermute v0.07    - Robin Houston, 2004-12-07
+| Algorithm::FastPermute v0.99    - Robin Houston, 2005-10-31
 -----------------------------------------------------------------------------
 
-v0.07: Don't compile with -pg; use -O2 instead. Code is identical
-to 0.06, only Makefile.PL has changed.
-
-v0.06: Now works on older (5.005) and newer (5.8.x) versions
-of Perl. Thanks to Richard Clamp, Edwin Pratomo, Jørn Amundsen,
-Yves Orton and Murat Ünalan for reporting problems.
-
-Note: A version of this implementation is also provided by the
-Algorithm::Permute module.
-
+This is a beta release of (what will become) version 1.0.
+It uses the proposed MULTICALL interface where available,
+and emulates it otherwise. This fixes a number of bugs.
 
 NAME
        Algorithm::FastPermute - Rapid generation of permutations
@@ -44,6 +37,6 @@ SEE ALSO
        the Algorithm::Permute manpage
 
 COPYRIGHT
-       Copyright (c) 2001-2002, Robin Houston. All Rights Reserved.
+       Copyright (c) 2001-2005, Robin Houston. All Rights Reserved.
        This module is free software. It may be used, redistributed
        and/or modified under the same terms as Perl itself.
