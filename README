@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------
-| Algorithm::FastPermute v0.99    - Robin Houston, 2005-10-31
+| Algorithm::FastPermute v0.999    - Robin Houston, 2008-02-23
 -----------------------------------------------------------------------------
 
 This is a beta release of (what will become) version 1.0.
@@ -37,6 +37,6 @@ SEE ALSO
        the Algorithm::Permute manpage
 
 COPYRIGHT
-       Copyright (c) 2001-2005, Robin Houston. All Rights Reserved.
+       Copyright (c) 2001-2008, Robin Houston. All Rights Reserved.
        This module is free software. It may be used, redistributed
        and/or modified under the same terms as Perl itself.

@@ -14,7 +14,7 @@ use vars qw(@ISA @EXPORT $VERSION);
 
 @ISA = qw(Exporter DynaLoader);
 @EXPORT = qw(permute);
-$VERSION = '0.99';
+$VERSION = '0.999';
 
 bootstrap Algorithm::FastPermute $VERSION;
 
@@ -82,7 +82,7 @@ L<Algorithm::Permute>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2001-2002, Robin Houston. All Rights Reserved.
+Copyright (c) 2001-2008, Robin Houston. All Rights Reserved.
 This module is free software. It may be used, redistributed
 and/or modified under the same terms as Perl itself.
 

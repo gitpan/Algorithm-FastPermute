@@ -7,8 +7,23 @@
 # define SvUOK(sv)           SvIOK_UV(sv)
 #endif
 
-#define AvARRAY_set(av, val) ((XPVAV*)  SvANY(av))->xav_array = (char*) val
+#ifndef cxinc
+# define cxinc() my_cxinc(aTHX)
+static I32
+my_cxinc(pTHX)
+{
+    cxstack_max = cxstack_max * 3 / 2;
+    Renew(cxstack, cxstack_max + 1, struct context);
+    return cxstack_ix + 1;
+}
+#endif
 
+/* This was changed by patch 24531 -- one of Nick's optimizations */
+#if PERL_VERSION < 10
+#  define AvARRAY_set(av, val) ((XPVAV*)  SvANY(av))->xav_array = (char*) val
+#else
+#  define AvARRAY_set(av, val) av->sv_u.svu_array = (SV**) val
+#endif
 
 void
 permute_engine(AV* av, SV** array, I32 level, I32 len, SV*** tmparea, OP* multicall_cop)
@@ -130,7 +145,7 @@ SV* array_sv;
         c->tmparea[x]  = malloc(c->len * sizeof **(c->tmparea));
     
     /* Set up the context for the callback */
-    PUSH_MULTICALL;
+    PUSH_MULTICALL(cv);
     save_destructor(afp_destructor, c);
     
     permute_engine(c->array, AvARRAY(c->array), 0, c->len,

@@ -35,3 +35,6 @@ Revision history for Perl extension Algorithm::FastPermute.
 0.99  Mon Oct 31 16:14:53 GMT 2005
 	- Fix eval handling;
 	- Use multicall interface.
+
+0.999 Sun Feb 24 09:42:16 GMT 2008
+	- Make it compatible with Perl 5.10
